@@ -27,6 +27,7 @@ public class JenkinsBuild {
     //   +3: /Users/Shared/Jenkins/Home/jobs/VRDungeons/builds/47/output
     string[] args = System.Environment.GetCommandLineArgs();
     for (int i=0; i<args.Length; i++){
+      System.Console.WriteLine(args[i]);
       if (args[i] == "-executeMethod"){
         if (i+4 < args.Length){
           // BuildMacOS method is args[i+1]
