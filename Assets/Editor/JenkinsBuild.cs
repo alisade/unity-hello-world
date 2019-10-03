@@ -29,7 +29,7 @@ public class JenkinsBuild {
     for (int i=0; i<args.Length; i++){
       System.Console.WriteLine("******************* " + i + "/" + args.Length + " ***** " + args[i] + " ****************");
       if (args[i] == "-executeMethod"){
-        if (i+4 < args.Length){
+        if (i+3 < args.Length){
           // BuildMacOS method is args[i+1]
           appName = args[i+2];   
           targetDir = args[i+3]; 
