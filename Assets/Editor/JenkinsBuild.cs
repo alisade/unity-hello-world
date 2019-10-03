@@ -16,7 +16,7 @@ public class JenkinsBuild {
   // ------------------------------------------------------------------------
   // called from Jenkins
   // ------------------------------------------------------------------------
-  public static void BuildMacOS(){
+  public static void BuildAndroid(){
  
     // just initializing here, will be overwritten
     string appName = "APP_NAME";
@@ -25,7 +25,7 @@ public class JenkinsBuild {
     string buildTarget = "BUILD_TARGET";
  
     // find: -executeMethod
-    //   +1: JenkinsBuild.BuildMacOS
+    //   +1: JenkinsBuild.BuildAndroid
     //   +2: VRDungeons
     //   +3: /Users/Shared/Jenkins/Home/jobs/VRDungeons/builds/47/output
     string[] args = System.Environment.GetCommandLineArgs();
