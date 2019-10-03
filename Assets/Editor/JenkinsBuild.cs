@@ -18,8 +18,11 @@ public class JenkinsBuild {
   // ------------------------------------------------------------------------
   public static void BuildMacOS(){
  
-    string appName = "hwandroid";
-    string targetDir = "/Users/administrator";
+    // just initializing here, will be overwritten
+    string appName = "APP_NAME";
+    string targetDir = "TARGET_DIR";
+    // https://docs.unity3d.com/ScriptReference/BuildTarget.html
+    string buildTarget = "BUILD_TARGET";
  
     // find: -executeMethod
     //   +1: JenkinsBuild.BuildMacOS
@@ -27,24 +30,24 @@ public class JenkinsBuild {
     //   +3: /Users/Shared/Jenkins/Home/jobs/VRDungeons/builds/47/output
     string[] args = System.Environment.GetCommandLineArgs();
     for (int i=0; i<args.Length; i++){
-      System.Console.WriteLine("******************* " + i + "/" + args.Length + " ***** " + args[i] + " ****************");
       if (args[i] == "-executeMethod"){
         if (i+3 < args.Length){
-          // BuildMacOS method is args[i+1]
+          buildTarget = args[i+1]
           appName = args[i+2];   
           targetDir = args[i+3]; 
           i += 3;
         }
         else {
-          System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod BuildMacOS <app name> <output dir>");
+          System.Console.WriteLine("[JenkinsBuild] Incorrect Parameters for -executeMethod Format: -executeMethod <build target> <app name> <output dir>");
           return;
         }
       }
     }
- 
-    // e.g. // /Users/Shared/Jenkins/Home/jobs/VRDungeons/builds/47/output/VRDungeons.app
-    string fullPathAndName = targetDir + System.IO.Path.DirectorySeparatorChar + appName + ".app";
-    BuildProject(EnabledScenes, fullPathAndName, BuildTargetGroup.Standalone, BuildTarget.StandaloneOSX, BuildOptions.None);
+
+    // for now we only support android build target
+    // e.g. // /Users/Shared/Jenkins/Home/jobs/VRDungeons/builds/47/output/VRDungeons.apk
+    string fullPathAndName = targetDir + System.IO.Path.DirectorySeparatorChar + appName + ".apk";
+    BuildProject(EnabledScenes, fullPathAndName, BuildTargetGroup.Standalone, BuildTarget.Android, BuildOptions.None);
   }
  
   // ------------------------------------------------------------------------
