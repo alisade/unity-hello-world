@@ -32,7 +32,7 @@ public class JenkinsBuild {
     for (int i=0; i<args.Length; i++){
       if (args[i] == "-executeMethod"){
         if (i+3 < args.Length){
-          buildTarget = args[i+1]
+          buildTarget = args[i+1];
           appName = args[i+2];   
           targetDir = args[i+3]; 
           i += 3;
